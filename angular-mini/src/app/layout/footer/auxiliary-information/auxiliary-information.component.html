@@ -1,0 +1,221 @@
+<div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Где мой заказ?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-sm static status">
+          <h5>Статус заказа, отследить и проверить заказ</h5>
+          <h6>Статус вашего заказа</h6>
+          <div class="well">
+            <form id="status_form" class="form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-sm-3">Номер заказа:</label>
+                <div class="col-sm-9">
+                  <input class="form-control" type="tel" name="form[id]" id="id" value="">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-3">E-mail:</label>
+                <div class="col-sm-9">
+                  <input class="form-control" type="email" name="form[email]" id="email" value="">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                  <p class="error"></p>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                  <input class="btn btn-success" type="submit" value="Узнать статус" onclick="form_status_submit(); return false; ">
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <script type="text/javascript">
+
+
+            function form_status_submit () {
+
+              $('#contact_form').find('.has-error').removeClass('has-error')
+              $('#contact_form p.error').html('')
+
+              $.ajax({
+                url:      '/status',
+                type:     'POST',
+                data:     $('#status_form').serialize(),
+                dataType: 'json',
+                success:  function (response) {
+
+                  if (response.errors && response.errors.length > 0) {
+                    $('#status_form #' + response.errors[0].field).parents('.form-group').addClass('has-error')
+                    $('#status_form p.error').html(response.errors[0].error)
+
+                  } else {
+
+                    $('#status_form').hide()
+                    var order_id = $('#id').val()
+                    var stages = response.result.response[order_id]
+
+                    var $h4 = $('<h4/>').html('Заказ №' + order_id)
+                    var $ul = $('<table/>').addClass('table table-striped')
+                    for (var stageIdx in stages) {
+                      var stage = stages[stageIdx]
+                      var $li = $('<tr>')
+                        .append($('<td/>').html(stage.date))
+                        .append($('<td/>').html(stage.title))
+                      $ul.prepend($li)
+                    }
+
+                    $('.well').append($h4).append($ul)
+                  }
+
+                },
+                error:    function (jqXHR, textStatus, errorThrown) {
+                }
+              })
+            }
+          </script>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle1">Доставка</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-sm static delivery">
+
+
+
+          <div class="right">
+            <h5>Способы доставки</h5>
+
+            <h6>Доставка</h6>
+            <div class="deliveries-holder">
+              <p class="help-block">Доставка осуществляется по&nbsp;России</p>
+
+              <section class="border">
+                <div class="deliveries"><div class="type" data-key="PICKUP"><h6>Самовывоз</h6><div class="one "><i class="sprite vm-delivery-merge_postamat_delivery-small"></i><div class="name"><p>Самовывоз из пункта выдачи<a href="#" class="open-map-new">Пункты выдачи</a></p></div><div class="dates"><span class="date">от 1 дня</span><span class="price">от 0 руб.</span><a class="more fancyinline" href="#delivery_description_merge_postamat_delivery">Подробнее</a><div class="delivery-description" id="delivery_description_merge_postamat_delivery" style="display: none"><div class="delivery-description__title">Самовывоз из пункта выдачи</div><p>Самовывоз из наших и партнерских пунктов выдачи</p></div></div></div></div><div class="type" data-key="DELIVERY24"><h6>Изготовление и доставка за 24 часа! (100% предоплата)</h6><div class="one "><i class="sprite vm-delivery-Dostavista_50_C_IP_201809-small"></i><div class="name"><p>Экспресс-доставка Dostavista</p></div><div class="dates"><span class="date">1 день</span><span class="price">450 руб.</span><a class="more fancyinline" href="#delivery_description_Dostavista_50_C_IP_201809">Подробнее</a><div class="delivery-description" id="delivery_description_Dostavista_50_C_IP_201809" style="display: none"><div class="delivery-description__title">Экспресс-доставка Dostavista</div><p>Изготовление заказа после предоплаты. На следующий день после предоплаты Вы получаете свой заказ!</p></div></div></div></div><div class="type" data-key="COURIER"><h6>Курьерская служба</h6><div class="one "><i class="sprite vm-delivery-CDEK_50_C_IP_201710-small"></i><div class="name"><p>Доставка курьером СДЭК</p></div><div class="dates"><span class="date">от 1 дня</span><span class="price">235 руб.</span><a class="more fancyinline" href="#delivery_description_CDEK_50_C_IP_201710">Подробнее</a><div class="delivery-description" id="delivery_description_CDEK_50_C_IP_201710" style="display: none"><div class="delivery-description__title">Доставка курьером СДЭК</div><ul>
+                  <li>Срок доставки считается в рабочих днях после изготовления изделия.</li>
+                  <li>Доставка осуществляется с 9 до 18ч (понедельник-пятница), в некоторых городах доступна вечерняя доставка до 21ч и доставка по субботам и воскресеньям.</li>
+                  <li>Оплата курьеру наличными. Безналичный расчет доступен не во всех городах.</li>
+                  <li>Более подробная информация по телефону 8-800-250-04-05</li>
+                </ul></div></div></div></div></div>
+              </section>
+
+              <section class="delivery-info">
+                <p class="help-block">* Срок и&nbsp;стоимость доставки будут зависеть от&nbsp;выбранных товаров</p>
+              </section>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalCenter5" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle1">Оплата</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-sm-9 static payment">
+
+
+
+          <h3>Способы оплаты</h3>
+          <div class="right">
+            <h6>Способы оплаты</h6>
+            <div class="payment-types">
+              <p>Оплатить свой заказ вы можете в разделе <a href="../privateoffice/myOrders">«Мои заказы»</a> в личном кабинете. Для этого вы должны быть авторизированы на сайте.</p>
+              <h6><span class="open">Оплата картой</span></h6>
+              <div class="slide">
+                <p>Оплата предоставляется без комиссии. Платежи осуществляются перечислением денежных средств с&nbsp;банковских карт VISA и&nbsp;MASTER CARD при наличии возможности совершения интернет-платежей, предоставленных Вашим банком, выпустившим банковскую карту.</p>
+                <p>О&nbsp;наличии возможности совершения интернет-платежей с&nbsp;использованием банковской карты, Вы&nbsp;можете узнать, обратившись в&nbsp;банк.</p>
+                <p>Услуга оплаты осуществляется в&nbsp;соответствии с&nbsp;Правилами международных платежных систем на&nbsp;принципах соблюдения конфиденциальности и&nbsp;безопасности совершения платежа, для чего используются самые современные методы проверки, шифрования и&nbsp;передачи данных по&nbsp;закрытым каналам связи.</p>
+                <p>Ввод данных банковской карты осуществляется на&nbsp;защищенной платежной странице банка&nbsp;— партнера, предоставляющего услугу.</p>
+                <p>Нашим банком&nbsp;— партнером является ОАО «АЛЬФА-БАНК».</p>
+                <h6>Конфиденциальность</h6>
+                <p>Услуга оплаты через интернет осуществляется в&nbsp;соответствии с&nbsp;Правилами международных платежных систем на&nbsp;принципах соблюдения конфиденциальности и&nbsp;безопасности совершения платежа, для чего используются самые современные методы проверки, шифрования и&nbsp;передачи данных по&nbsp;закрытым каналам связи.</p>
+                <p>Ввод данных банковской карты осуществляется на&nbsp;защищенной платежной странице банка&nbsp;— партнера, предоставляющего Услугу.</p>
+                <p>Нашим банком&nbsp;— партнером является ОАО «АЛЬФА-БАНК».</p>
+                <h6>Случаи отказа в&nbsp;совершении платежа:</h6>
+                <ul>
+                  <li>банковская карта не&nbsp;предназначена для совершения платежей через интернет, о&nbsp;чем можно узнать, осведомившись в&nbsp;Вашем Банке;</li>
+                  <li>данные банковской карты введены неверно.</li>
+                </ul>
+                <p>Для корректного ввода необходимо внимательно и&nbsp;точно, соблюдая последовательность цифр и&nbsp;букв, ввести данные так, как они указаны на&nbsp;Вашей карте:</p>
+                <ol>
+                  <li>владелец карты (как правило, указан на&nbsp;лицевой стороне банковской карты на&nbsp;английском языке заглавными буквами. Например, IVANOV IVAN);</li>
+                  <li>номер карты (как правило, указан на&nbsp;лицевой стороне банковской карты и&nbsp;состоит из&nbsp;16-и цифр. Например: 0123 4567 8901 2345);</li>
+                  <li>срок действия карты (как правило, указан на&nbsp;лицевой стороне банковской карты&nbsp;— месяц и&nbsp;год, до&nbsp;которого действительна карта. Срок действия карты вводится цифрами. Например, 12&nbsp;(вводится в&nbsp;поле месяца) и&nbsp;13 (вводится в&nbsp;поле года), что означает, что карта действительна до&nbsp;декабря 2013&nbsp;года); г) CVV2 или CVC2 код карты (как правило, указан на&nbsp;обратной стороне банковской карты и&nbsp;состоит из&nbsp;3-х цифр. Например, 123);</li>
+                  <li>истек срок действия банковской карты. Срок действия карты, как правило, указан на&nbsp;лицевой стороне карты (это месяц и&nbsp;год, до&nbsp;которого действительна карта). Подробнее о&nbsp;сроке действия карты&nbsp;Вы можете узнать, обратившись в&nbsp;банк, выпустивший банковскую карту;</li>
+                  <li>недостаточно средств для оплаты на&nbsp;банковской карте. Подробнее о&nbsp;наличии средств на&nbsp;банковской карте&nbsp;Вы можете узнать, обратившись в&nbsp;банк, выпустивший банковскую карту;</li>
+                  <li>превышен установленный лимит операций за&nbsp;день. Сумма ежедневного лимита для всех операций определяется банком-партнером.</li>
+                </ol>
+                <p>По&nbsp;вопросам оплаты с&nbsp;помощью банковской карты и&nbsp;иным вопросам, связанным с&nbsp;работой сайта, Вы&nbsp;можете обращаться по&nbsp;следующим телефонам: 8-800-200-4660&nbsp;с 07-00 до&nbsp;19-00 по&nbsp;МСК</p>
+              </div>
+              <h6><span class="open">Оплата банковскими картами</span></h6>
+              <div class="slide">
+                <p>Вы&nbsp;можете оплатить заказ, используя банковскую карту Visa или Mastercard. Выберите способ оплаты: «Банковские карты», и&nbsp;вы&nbsp;будете перенаправлены на&nbsp;сайт сервиса ROBOKASSA. Следуйте инструкциям.</p>
+                <p>Для осуществления платежа Вам потребуется сообщить данные Вашей пластиковой карты. Передача этих сведений производится с&nbsp;соблюдением всех необходимых мер безопасности. Данные будут сообщены только на&nbsp;авторизационный сервер Банка по&nbsp;защищенному каналу (протокол SSL 3.0). Информация передается в&nbsp;зашифрованном виде и&nbsp;сохраняется только на&nbsp;специализированном сервере платежной системы.&nbsp;</p>
+              </div>
+              <h6><span class="open">Яндекс.Деньги</span></h6>
+              <div class="slide">
+                <p>Яндекс.Деньги — доступный и безопасный способ платить за товары и услуги через интернет. Пополнение счета и оплата заказов происходят в реальном времени на сайте платежной системы. Для перевода средств на наш электронный кошелек необходимо иметь собственный счет в системе «Яндекс.Деньги» и достаточную для перевода сумму.</p>
+                <p>Для этого выберите способ оплаты: «Яндекс.Деньги», вы будете перенаправлены на сайт сервиса ROBOKASSA. Далее следуйте инструкциям.</p>
+              </div>
+              <h6><span class="open">Платежный сервис QIWI (КИВИ)</span></h6>
+              <div class="slide">
+                <p>QIWI Кошелек&nbsp;— это простой способ оплаты услуг, позволяющий вносить денежные средства в&nbsp;любое удобное время, где&nbsp;бы вы&nbsp;не&nbsp;находились, т.&nbsp;к. QIWI Кошелек есть в&nbsp;платежных терминалах, в&nbsp;Интернете на&nbsp;сайте&nbsp;<a href="https://w.qiwi.ru/" target="_blank" rel="nofollow">QIWI</a>, в&nbsp;приложениях для социальных сетей и&nbsp;в&nbsp;мобильных устройств.</p>
+                <p class="MsoNormal" style="background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;">Оплатить товары Vsemayki.ru можно как в&nbsp;терминалах, так и через «QIWI Кошелек» на&nbsp;сайте&nbsp;QIWI.</p>
+                <p class="MsoNormal" style="background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;">Сформируйте заказ и&nbsp;выберите в&nbsp;качестве способа оплаты QIWI Кошелек. Оплатите автоматически созданный счет на&nbsp;оплату: на&nbsp;сайте&nbsp;QIWI, терминале QIWI, с&nbsp;помощью приложения для социальных сетей или мобильного&nbsp;<a href="" target="_blank" rel="nofollow">телефона</a></p>
+                <p class="MsoNormal" style="background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;">При оплате через терминал QIWI:</p>
+                <p class="MsoNormal" style="margin-left: 36pt; text-indent: -18pt; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><!-- [if !supportLists]-->1.&nbsp;&nbsp;&nbsp;&nbsp; <!--[endif]-->В терминале QIWI, нажмите среднюю кнопку «QIWI Кошелек» и&nbsp;введите номер мобильного, который вы&nbsp;указали при формировании заказа</p>
+                <p class="MsoNormal" style="margin-left: 36pt; text-indent: -18pt; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><!-- [if !supportLists]-->2.&nbsp;&nbsp;&nbsp;&nbsp; <!--[endif]-->Нажмите кнопку «Счета к&nbsp;Оплате» (она будет мигать)</p>
+                <p class="MsoNormal" style="margin-left: 36pt; text-indent: -18pt; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><!-- [if !supportLists]-->3.&nbsp;&nbsp;&nbsp;&nbsp; <!--[endif]-->Оплатите счет наличными</p>
+                <p class="MsoNormal" style="margin-left: 36pt; text-indent: -18pt; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><!-- [if !supportLists]-->4.&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Сдачу переведите к&nbsp;себе на&nbsp;мобильный телефон</p>
+              </div>
+              <h6><span class="open">Оплата при получении</span></h6>
+              <div class="slide">
+                <p>Вы&nbsp;можете оплатить Ваш заказ в <a title="интернет-магазин Геометрия" href="../../" target="_blank">интернет-магазине Геометрия</a> наличными при получении. В&nbsp;зависимости от&nbsp;выбранного способа доставки,&nbsp;Вы оплачиваете заказ либо сотруднику курьерской службы, либо при получении на&nbsp;Почте России. Обращаем Ваше внимание, что Почта России взимает&nbsp;2% от&nbsp;полученной суммы (но&nbsp;не&nbsp;менее 50 рублей) за&nbsp;перевод наложенного платежа.</p>
+              </div>
+              <h4>&nbsp;</h4>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

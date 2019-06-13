@@ -1,0 +1,146 @@
+.favorites{
+  width: auto;
+  height: 500px;
+}
+
+h3 {
+  font-size: 24px;
+  margin: 0;
+  padding-top: 10%;
+}
+
+.favorites-list {
+  margin-top: 24px;
+}
+
+.favorites-item:after, .favorites-item:before {
+  content: " ";
+  display: table;
+}
+
+.favorites-item:after, .favorites-item:before {
+  content: " ";
+  display: table;
+}
+
+.favorites-item:first-child {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.favorites-item {
+  zoom: 1;
+  border: 1px solid #eaeaea;
+  border-radius: 2px;
+  min-height: 120px;
+  padding: 10px;
+  position: relative;
+}
+
+.favorites-item__colors-wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+.favorites-item .color-box:hover {
+  border-color: #23c3ff;
+}
+
+.favorites-item .color-box {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #eaeaea;
+  border-radius: 2px;
+  margin: 2px;
+}
+
+.favorites-item__cart {
+  padding: 3% 0;
+  text-align: center;
+}
+
+.favorites-item__price--sale {
+  text-align: -moz-center;
+  font-size: 24px;
+  color: #f82438;
+}
+
+.favorites-item__cart button {
+  background: 0 0;
+  border: 1px solid #23c3ff;
+  border-radius: 2px;
+  color: #23c3ff;
+  padding: 10px 24px;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button, select {
+  text-transform: none;
+}
+button {
+  overflow: visible;
+}
+
+.fa-remove:before, .fa-close:before, .fa-times:before {
+  content: "\f00d";
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.favorites-item__cart {
+  padding: 3% 0;
+  text-align: center;
+}
+
+:after, :before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.favorites-item__delete {
+  cursor: pointer;
+  opacity: .35;
+  position: absolute;
+  top: 3%;
+  right: 1%;
+}
+
+i, cite, em, var, address, dfn {
+  font-style: italic;
+}
+
+.favorites-item__old-price {
+  padding-bottom: 1%;
+  font-size: 18px;
+  position: absolute;
+  text-decoration: line-through;
+  top: -16px;
+  left: 32px;
+}

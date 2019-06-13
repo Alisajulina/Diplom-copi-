@@ -1,0 +1,99 @@
+.cecotal{
+  width: 100%;
+  height: 100%;
+}
+
+
+.imgl1 {
+  width: 350px;
+  height: 510px;
+}
+
+.imgl2 {
+  width: 350px;
+  margin-left: 1%;
+  margin-right: 1%;
+  height: 510px;
+}
+
+.sd{
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.imgl3 {
+  width: 262px;
+  height: 262px;
+}
+
+h1 {
+  font-family: "geometria_lightlight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  color: #000;
+  margin: 0 auto 35px;
+  line-height: 45px;
+  width: 585px;
+  text-align: center;
+  padding-top: 25px;
+}
+
+.b-catalog_banner{
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.b-catalog_banner a {
+  display: block;
+  color: #000;
+  cursor: pointer;
+  position: relative;
+}
+
+.b-catalog_banner a:after {
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  will-change: opacity;
+  transition: opacity 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -webkit-transition: opacity 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.b-catalog_title-section.center {
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  background-color: rgba(214, 214, 214, 0.8);
+}
+
+.b-catalog_title-section:hover {
+  height: 50px;
+  bottom: 0;
+  background-color: rgb(255, 255, 255);
+}
+
+
+.b-catalog_title-section.bottom {
+  background-color: rgba(214, 214, 214, 0.8);
+  bottom: 0;
+  width: 262px;
+  text-align: center;
+  left: 0;
+
+}
+
+.b-catalog_title-section.right {
+  width: 100%;
+  text-align: center;
+  left: 0;
+  height: 50px;
+}
+
+.b-catalog_title-section {
+  position: absolute;
+  font-size: 26px;
+  width: 100%;
+  left: 0;
+  text-align: center;
+}

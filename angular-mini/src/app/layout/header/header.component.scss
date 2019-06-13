@@ -1,0 +1,46 @@
+//
+//.d1{
+//  width: 100%;
+//  height: 120px;
+//}
+  /*float: none;*/
+  //text-align: center;
+  //display: inline-block;
+  //background-color:#FFFFFF;
+
+//}
+
+.logo{
+  //left: 36%;
+  //top: 67px;
+  //position: absolute;
+  width: 360px;
+  height: 48px;
+  background-size: cover;
+  background-clip: content-box;
+  background-position: center;
+  background-image: url("/src/assets/img/logo.png");
+}
+
+.izbr{
+  margin-left: 40px;
+  width: 48px;
+  height: 48px;
+  background-image: url("/src/assets/img/icons8-48.png");
+  background-size: cover;
+  background-clip: inherit;
+  display: inline-block ;
+
+}
+
+.korzina {
+  margin-left: 190px;
+  width: 48px;
+  height: 48px;
+  background-image: url( "/src/assets/img/shoppingbasket_83998.png");
+  background-size: cover;
+  background-clip: inherit;
+  display: inline-block ;
+
+
+}

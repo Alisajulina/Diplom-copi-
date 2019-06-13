@@ -1,0 +1,111 @@
+.d2{
+  width: 100%;
+  height: 10px;
+  padding: 0;
+  background-image: url("/src/assets/img/nashville_25_11559_oboi_cetnoj_kalledoskop_1920x1200.jpg");
+  background-attachment:fixed;
+  background-size: cover;
+  background-clip: border-box;
+  /*float: none;*/
+  margin: 0;
+  display: inline-block;
+
+}
+
+.cl{
+  //background-color: aqua;
+  height: 40px;
+  position: relative;
+}
+
+nav {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 50px;
+  clear: both;
+  text-align: center;
+}
+
+nav > ul {
+  margin-left: -15px;
+  margin-right: 15px;
+
+}
+nav > ul > li {
+  /*background-color: blue;*/
+  //margin-left: -15px;
+  //margin-right: 10px;
+  float: left;
+  list-style: none;
+  display: inline-block;
+  font-family: 'Times New Roman', Times, serif;
+  /*font-family: "Source Sans Pro";*/
+  font-size: 24px;
+  font-weight: normal;
+  color:#000000;
+  //letter-spacing: 4px;
+  text-align: center;
+  width: 20%;
+  //transition: all 0.5s linear;
+  position: relative;
+
+}
+nav > ul > li:hover {
+  display: block;
+  color: #717070;
+  cursor: pointer;
+  /*border-left: 1px solid brown;
+  border-right: 1px solid brown;*/
+}
+
+nav > ul > li > ul{
+  //margin-top: 10px;
+  min-height: 10px;
+  background-color: rgba(255,255,255,0.97);
+  position:absolute;
+  width: 100%;
+  display: none;
+  text-align: center;
+}
+
+nav > ul > li:hover ul{
+  display: block;
+}
+//nav ul  li  ul:hover li{
+//  display: block;
+//}
+//nav > ul > li:before{
+//  box-sizing: border-box;
+//  content: " ";
+//}
+
+nav > ul > li > ul > li {
+  /*border-top: 1px solid brown;
+  border-bottom: 1px solid brown;*/
+  height: 30px;/* правильно*/
+  //display: block;
+  ///*width: 100px;/* правильно*/
+  display:flex; /* правильно*/
+  justify-content: flex-start;
+  margin-left: -40px;/* правильно*/
+  list-style: none;/*правильно*/
+  font-family: 'Times New Roman', Times, serif;/*шрифт*/
+  line-height: 1.0;/*промежуточный интервал*/
+  font-size: 16px;/*размер текста*/
+  text-align: center;/*выравнивание*/
+  color: black;
+}
+
+a {
+  color:#000000;
+}
+
+.menu li {
+  padding: 10px;
+  border: none;
+  background-color: lightgray;
+}
+.menu li:hover {
+  background-color: white;
+}

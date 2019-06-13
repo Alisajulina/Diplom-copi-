@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">г. Кострома</div>
+    <div class="col-sm"></div>
+    <div class="col-sm">
+      <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalCenter1">Помощь</button>
+        <button type="button" class="btn btn-default">Контакты</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalCenter">Личный кабинет</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Личный кабинет</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-login></app-login>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle1">Помощь</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-feedback></app-feedback>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<script>-->
+<!--  $('#myModal').on('shown.bs.modal', function () {-->
+<!--    $('#myInput').trigger('focus')-->
+<!--  })-->
+<!--</script>-->
