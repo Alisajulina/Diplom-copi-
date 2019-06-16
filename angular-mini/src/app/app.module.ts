@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// tslint:disable-next-line:import-spacing
 import { FormsModule } from'@angular/forms';
-
 import { AppComponent } from './app.component';
 import { PageComponent } from './page/page.component';
-import { CoreComponent } from './core/core.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { MenuComponent } from './layout/menu/menu.component';
@@ -25,7 +24,8 @@ import { FeedbackComponent } from './home/feedback/feedback.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuxiliaryInformationComponent } from './layout/footer/auxiliary-information/auxiliary-information.component';
 import { ToastrModule } from 'ngx-toastr';
-import { UserService } from './user/user.service';
+import { UserService } from './core/user/user.service';
+import { AuthGuard } from './auth/auth.guard';
 
 
 
@@ -33,7 +33,6 @@ import { UserService } from './user/user.service';
   declarations: [
     AppComponent,
     PageComponent,
-    CoreComponent,
     HeaderComponent,
     FooterComponent,
     MenuComponent,
@@ -58,10 +57,10 @@ import { UserService } from './user/user.service';
     HttpClientModule,
     FormsModule,
     ToastrModule.forRoot(),
-
+    BrowserModule.withServerTransition({appId: 'yuor-app-id'}),
 
   ],
-  providers: [UserService],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 }
 

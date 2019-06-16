@@ -6,11 +6,12 @@ import { CentreCatalComponent } from './home/centre-catal/centre-catal.component
 import {FavoritesComponent} from './home/favorites/favorites.component';
 import { CatalogAllComponent } from './home/catalog-all/catalog-all.component';
 import { TovarComponent } from './home/catalog-all/catalog/tovar/tovar.component';
+import {  AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
   { path: 'centrecat', component: CentreCatalComponent},
-  { path: '', component: CentreCatalComponent},
+  { path: '', component: CentreCatalComponent, canActivate: [AuthGuard]},
   { path: 'basket', component: BasketComponent},
   { path: 'favorites', component: FavoritesComponent},
   { path: 'allcatal', component: CatalogAllComponent},

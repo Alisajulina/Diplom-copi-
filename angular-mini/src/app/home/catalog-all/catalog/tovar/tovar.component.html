@@ -59,12 +59,12 @@
                </div>
             </div>
             <div>
-              <div class="btn_form ">
-                <a routerLink="/basket">Добавить в корзину</a>
-              </div>
-              <div class="btn_form1 ">
+              <button class="btn_form" ng-click="addCart(<?=$p['id']?>, num<?=$p['id']?>, '<?=$p['title']?>', <?=$p['price']?>)">
+<!--                <a routerLink="/basket" >Добавить в корзину</a>-->
+              </button>
+              <button class="btn_form1" >
                 <a routerLink="/basket"></a>
-              </div>
+              </button>
             </div>
 <!--            <div class="row fg1">-->
 <!--            <a  id="exampleModalLongTitle"><span>Ввойдите, чтобы купить</span></a></div>-->

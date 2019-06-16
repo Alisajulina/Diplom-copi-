@@ -6,60 +6,60 @@
   <div class="registration">
   <div class="registration_left">
     <h2>Новый Пользователь? <span>  Создать Учетную Запись </span></h2>
-        <script>
-      (function() {
+<!--        <script>-->
+<!--      (function() {-->
 
-        // Create input element for testing
-        let inputs = document.createElement('input');
+<!--        // Create input element for testing-->
+<!--        let inputs = document.createElement('input');-->
 
-        // Create the supports object
-        let supports = {};
+<!--        // Create the supports object-->
+<!--        let supports = {};-->
 
-        supports.autofocus   = 'autofocus' in inputs;
-        supports.required    = 'required' in inputs;
-        supports.placeholder = 'placeholder' in inputs;
+<!--        supports.autofocus   = 'autofocus' in inputs;-->
+<!--        supports.required    = 'required' in inputs;-->
+<!--        supports.placeholder = 'placeholder' in inputs;-->
 
-        // Fallback for autofocus attribute
-        if(!supports.autofocus) {
+<!--        // Fallback for autofocus attribute-->
+<!--        if(!supports.autofocus) {-->
 
-        }
+<!--        }-->
 
-        // Fallback for required attribute
-        if(!supports.required) {
+<!--        // Fallback for required attribute-->
+<!--        if(!supports.required) {-->
 
-        }
+<!--        }-->
 
-        // Fallback for placeholder attribute
-        if(!supports.placeholder) {
+<!--        // Fallback for placeholder attribute-->
+<!--        if(!supports.placeholder) {-->
 
-        }
+<!--        }-->
 
-        // Change text inside send button on submit
-        let send = document.getElementById('register-submit');
-        if(send) {
-          send.onclick = function () {
-            this.innerHTML = '...Sending';
-          }
-        }
+<!--        // Change text inside send button on submit-->
+<!--        let send = document.getElementById('register-submit');-->
+<!--        if(send) {-->
+<!--          send.onclick = function () {-->
+<!--            this.innerHTML = '...Sending';-->
+<!--          }-->
+<!--        }-->
 
-      })();
-    </script>
+<!--      })();-->
+<!--    </script>-->
     <div class="registration_form">
       <!-- Form -->
-      <form  method ="post" #Geometry="ngForm" (ngSubmit)= " OnSubmit (userRegistrationForm)">
+      <form  method ="post" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
         <div>
           <label>
-            <input placeholder="Имя"  [(ngModel)]="user.name" type="text" tabindex="1" required autofocus>
+            <input placeholder="Имя" [(ngModel)]="user.name" #UserName="ngModel" type="text" tabindex="1" required autofocus>
           </label>
         </div>
         <div>
           <label>
-            <input placeholder="Фамилия" type="text" tabindex="2"  [(ngModel)]="user.lastName" required autofocus>
+            <input placeholder="Фамилия" type="text" tabindex="2" #LastName="ngModel" [(ngModel)]="user.lastName" required autofocus>
           </label>
         </div>
         <div>
           <label>
-            <input placeholder="email" type="email" tabindex="3"  [(ngModel)]="user.email" [pattern]="emailPattern" required>
+            <input placeholder="email" type="email" tabindex="3" #Email="ngModel" [(ngModel)]="user.email" [pattern]="emailPattern" required>
           </label>
         </div>
         <div class="sky-form">
@@ -73,7 +73,7 @@
         </div>
         <div>
           <label>
-            <input placeholder="Пароль" type="password" [(ngModel)]="user.password" tabindex="4" required>
+            <input placeholder="Пароль" type="password" #Password="ngModel" [(ngModel)]="user.password" tabindex="4" required>
           </label>
         </div>
         <div>
@@ -94,20 +94,20 @@
     <div class="registration_form">
       <!-- Form -->
 
-      <form id="" action="http://localhost:28526/" method="post" asp-controller="Account" asp-action="Register">
-        <div asp-validation-summary="ModelOnly"></div>
+      <form method="post" #loginForm="ngForm">
+        <div></div>
         <div>
           <label>
-            <input placeholder="email:" type="email" tabindex="3" required>
+            <input placeholder="email:" type="email" #Email="ngModel" ngModel name="emailPattern" tabindex="3" required>
           </label>
         </div>
         <div>
           <label>
-            <input placeholder="Пароль" type="password" tabindex="4" required>
+            <input placeholder="Пароль" type="password" #Password ngModel name="Password" tabindex="4" required>
           </label>
         </div>
         <div>
-          <input type="submit" value="Войти" id="">
+          <input type="submit" value="Войти" [disabled]="!loginForm.valid">
         </div>
         <div class="forget">
           <a href="">Забыли пароль?</a>
