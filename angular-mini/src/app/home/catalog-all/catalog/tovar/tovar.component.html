@@ -60,10 +60,12 @@
             </div>
             <div>
               <button class="btn_form" ng-click="addCart(<?=$p['id']?>, num<?=$p['id']?>, '<?=$p['title']?>', <?=$p['price']?>)">
+                Добавить в корзину
 <!--                <a routerLink="/basket" >Добавить в корзину</a>-->
               </button>
-              <button class="btn_form1" >
-                <a routerLink="/basket"></a>
+              <button class="btn_form1" (click)="addIzb()">
+                Добавить в избранное
+                <!-- <a routerLink="/basket"></a> -->
               </button>
             </div>
 <!--            <div class="row fg1">-->

@@ -3,6 +3,7 @@ import { User } from '../../core/user/user.model';
 import {  NgForm } from '@angular/forms';
 import {  UserService } from '../../core/user/user.service';
 import { ToastrService } from 'ngx-toastr';
+import {HttpService} from '../../core/Service/http.service';
 
 
 @Component({
@@ -11,10 +12,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  user: User;
+  user: User = new User();
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+[a-z]{2,4}$';
   // isLoginError:  boolean =  false;
-  constructor(private userService: UserService, private toast: ToastrService) { }
+  constructor(private userService: UserService, private toast: ToastrService, private http: HttpService) { }
 
   ngOnInit() {
     this.resetForm();
@@ -33,15 +34,10 @@ export class LoginComponent implements OnInit {
   }
 
   OnSubmit(form: NgForm) {
-    this.userService.registerUser(form.value)
-      .subscribe((data: any) => {
-        // tslint:disable-next-line:triple-equals
-        if (data.Succeeded == true) {
-          this.resetForm(form);
-          this.toast.success('User registration successful');
-        } else {
-          this.toast.error(data.Errors[0]);
-        }
-      });
+    console.log(form.value)
+    form.value['GenderId'] = '';
+    this.http.post('Account/Register', form.value).subscribe(data => {
+      alert('Успешная регистрация');
+  });
     }
 }

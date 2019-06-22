@@ -49,17 +49,17 @@
       <form  method ="post" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
         <div>
           <label>
-            <input placeholder="Имя" [(ngModel)]="user.name" #UserName="ngModel" type="text" tabindex="1" required autofocus>
+            <input placeholder="Имя" [(ngModel)]="user.name" name="FirstName"  type="text" tabindex="1" required autofocus>
           </label>
         </div>
         <div>
           <label>
-            <input placeholder="Фамилия" type="text" tabindex="2" #LastName="ngModel" [(ngModel)]="user.lastName" required autofocus>
+            <input placeholder="Фамилия" type="text" tabindex="2" name="LastName" [(ngModel)]="user.lastName" required autofocus>
           </label>
         </div>
         <div>
           <label>
-            <input placeholder="email" type="email" tabindex="3" #Email="ngModel" [(ngModel)]="user.email" [pattern]="emailPattern" required>
+            <input placeholder="email" type="email" tabindex="3" name="Email" [(ngModel)]="user.email" [pattern]="emailPattern" required>
           </label>
         </div>
         <div class="sky-form">
@@ -73,7 +73,7 @@
         </div>
         <div>
           <label>
-            <input placeholder="Пароль" type="password" #Password="ngModel" [(ngModel)]="user.password" tabindex="4" required>
+            <input placeholder="Пароль" type="password" name="Password" [(ngModel)]="user.password" tabindex="4" required>
           </label>
         </div>
         <div>

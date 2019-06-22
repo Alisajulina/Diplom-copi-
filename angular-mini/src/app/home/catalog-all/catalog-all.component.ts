@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/core/Service/http.service';
 
 @Component({
   selector: 'app-catalog-all',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatalogAllComponent implements OnInit {
 
-  constructor() { }
+  Catalog;
+  constructor(private http: HttpService) { }
 
   ngOnInit() {
+    this.GetCatalog();
   }
 
+
+  GetCatalog() {
+    this.http.get('Product/GetList').subscribe(data => {
+      this.Catalog = data;
+      console.log(data);
+    });
+  }
 }

@@ -26,7 +26,8 @@ import { AuxiliaryInformationComponent } from './layout/footer/auxiliary-informa
 import { ToastrModule } from 'ngx-toastr';
 import { UserService } from './core/user/user.service';
 import { AuthGuard } from './auth/auth.guard';
-
+import { Routes } from '@angular/router';
+import { HttpService } from './core/Service/http.service';
 
 
 @NgModule({
@@ -58,9 +59,12 @@ import { AuthGuard } from './auth/auth.guard';
     FormsModule,
     ToastrModule.forRoot(),
     BrowserModule.withServerTransition({appId: 'yuor-app-id'}),
-
   ],
-  providers: [AuthGuard],
+  providers: [
+      AuthGuard,
+    UserService,
+    HttpService,
+  ],
   bootstrap: [AppComponent]
 }
 

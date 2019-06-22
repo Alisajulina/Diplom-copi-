@@ -7,15 +7,17 @@ import {FavoritesComponent} from './home/favorites/favorites.component';
 import { CatalogAllComponent } from './home/catalog-all/catalog-all.component';
 import { TovarComponent } from './home/catalog-all/catalog/tovar/tovar.component';
 import {  AuthGuard } from './auth/auth.guard';
+import { LoginComponent } from './home/login/login.component';
 
 
 const routes: Routes = [
   { path: 'centrecat', component: CentreCatalComponent},
   { path: '', component: CentreCatalComponent, canActivate: [AuthGuard]},
+  { path: 'login', component: LoginComponent},
   { path: 'basket', component: BasketComponent},
   { path: 'favorites', component: FavoritesComponent},
   { path: 'allcatal', component: CatalogAllComponent},
-  { path: 'tovar', component: TovarComponent},
+  { path: 'tovar/:id', component: TovarComponent},
 ];
 
 @NgModule({
