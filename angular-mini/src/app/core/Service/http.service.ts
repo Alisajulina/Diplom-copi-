@@ -22,6 +22,7 @@ export class HttpService {
         'Access-Control-Allow-Origin': '*',
     });
 
+
     private httpOptions = ({ headers: this.headers, withCredentials: true });
     private httpOptionsFile = ({ headers: this.headersFile, withCredentials: true, responseType: 'blob' });
 
